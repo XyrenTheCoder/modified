@@ -49,7 +49,7 @@ def clear():
 #if checkrun(): pass
 #else: raise SystemExit("messageHandler is not running")
 
-#when
+#when 
 print(f"[system] You have joined the chat successfully.\nWelcome to the beta version of Rqchat (idk what name to put here lol)! \nType ]info to get more info.\n")
 time.sleep(5)
 x = input("- press enter to dismiss this message or type \" ]info \" to get information -\n> ")
@@ -72,3 +72,7 @@ while True:
         time.sleep(2)
     else: 
         send(msg)
+
+
+
+#btw i use ____
