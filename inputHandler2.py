@@ -61,7 +61,7 @@ if x == "]info":
 
 while True:
     clear()
-    print("level: modified medium\n[WARNING] You are currently using a modified version of inputHandler!\n")
+    print("[WARNING] You are currently using a modified version of inputHandler!\n")
     msg = input(">>> ")
     if len(msg) == 0 or msg == " ":
         print("[failed] You cannot send empty messages")
