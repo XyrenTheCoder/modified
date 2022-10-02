@@ -1,7 +1,4 @@
-import os
-import requests
-import pickle
-import time
+import os, time, pickle, requests
 
 fn = f"{os.getcwd()}/.data"
 
@@ -15,19 +12,16 @@ def load_data():
     if os.path.isfile(fn):
         with open(fn, "rb") as file:
             return pickle.load(file)
-    else:
-        return dict()
+    else: return dict()
 
 def save(uname, dat):
     data = load_data()
     data[uname] = dat
-    with open(fn, "wb") as file:
-        pickle.dump(data, file)
+    with open(fn, "wb") as file: pickle.dump(data, file)
         
 def load(uname):
     data = load_data()
-    if uname not in data:
-        return Data(0, 0, 0)
+    if uname not in data: return Data(0, 0, 0)
     return data[uname]
 
 def checkrun() -> bool:
@@ -49,30 +43,21 @@ def clear():
 #if checkrun(): pass
 #else: raise SystemExit("messageHandler is not running")
 
-#when 
-print(f"[system] You have joined the chat successfully.\nWelcome to the beta version of Rqchat (idk what name to put here lol)! \nType ]info to get more info.\n")
-time.sleep(5)
-x = input("- press enter to dismiss this message or type \" ]info \" to get information -\n> ")
+def recur_func():
+    try:
+        e = load("1")
+        msg = input(f"{e.username}: ")
+        if len(msg) == 0 or msg == " ": print("[system] You cannot send empty messages.")
+        elif len(msg) > 2000: 
+            overlen = len(msg) - 2000
+            print(f"[system] Your message is {overlen} characters longer than the length limit, please shorten it and try again.")
+        else: send(msg)
+    except: pass
+    finally: return recur_func()
 
-if x == "]info": 
-    clear()
-    print("[info] This is an modified inputHandler for the modified messageHandler by αrchιshα#5518 (discord). Rqchat is a simple chatroom system written in Python. The original author is thatOneArchUser#5794 (discord).\nYou can chat here freely by simply typing messages in the \" >>> \" and send them by pressing enter.\nYou cannot send an empty message or simply send some spaces.\nThe maximum character length limit is 2000.\nWe hope you can have a enjoyable experience here!\n(This is a beta version, you may come across few bugs. Feel free to report them by DMing us in Discord!)\n")
-    input("- press enter to dismiss -\n> ")
-
+#when run
+e = load("1")
+clear()
+print(f"[system] You have joined the chat as {e.username}.")
 while True:
-    clear()
-    print("[WARNING] You are currently using a modified version of inputHandler!\n")
-    msg = input(">>> ")
-    if len(msg) == 0 or msg == " ":
-        print("[failed] You cannot send empty messages")
-        time.sleep(2)
-    elif len(msg) > 2000: 
-        overlen = len(msg) - 2000
-        print(f"[failed] Your message is {overlen} characters longer than the length limit, please shorten it and try again")
-        time.sleep(2)
-    else: 
-        send(msg)
-
-
-
-#btw i use ____
+    recur_func()
