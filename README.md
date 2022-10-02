@@ -1,4 +1,3 @@
-# rqchat-modified
-modified version of rqchat
+# modified
 
-i mean, u havent name the whole app yet...
+no name yet
