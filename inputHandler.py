@@ -59,5 +59,4 @@ def recur_func():
 e = load("1")
 clear()
 print(f"[system] You have joined the chat as {e.username}.")
-while True:
-    recur_func()
+while True: recur_func()
